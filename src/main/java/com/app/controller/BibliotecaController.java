@@ -14,22 +14,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.entities.Ano;
-import com.app.services.AnoService;
+import com.app.entities.Biblioteca;
+import com.app.services.BibliotecaService;
 
 @RestController
-@RequestMapping("/Ano")
-public class AnoController {
+@RequestMapping("/Biblioteca")
+public class BibliotecaController {
 
 	@Autowired
-	private AnoService AnoServices;
+	private BibliotecaService BibliotecaService;
 
 	@PostMapping("/save")
-	public ResponseEntity<String> salvar(@RequestBody Ano ano) {
+	public ResponseEntity<String> salvar(@RequestBody Biblioteca biblioteca) {
 
 		try {
-			String sAno = this.AnoServices.salvar(ano);
-			return new ResponseEntity<String>(sAno + "foi incluido!", HttpStatus.CREATED);
+			String NovaBiblioteca = this.BibliotecaService.salvar(biblioteca);
+			return new ResponseEntity<String>(NovaBiblioteca + " foi incluido!", HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -37,10 +37,10 @@ public class AnoController {
 	}
 
 	@PutMapping("/updade/{id}")
-	public ResponseEntity<String> update(@RequestBody Ano ano, @PathVariable int id) {
+	public ResponseEntity<String> update(@RequestBody Biblioteca biblioteca, @PathVariable int id) {
 		try {
-			int idAno = this.AnoServices.updade(id, ano);
-			return new ResponseEntity<String>(idAno + "foi incluido!", HttpStatus.CREATED);
+			String IdBlibioteca = this.BibliotecaService.updade(id, biblioteca);
+			return new ResponseEntity<String>(IdBlibioteca + " foi atualizado!", HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -48,9 +48,9 @@ public class AnoController {
 	}
 
 	@GetMapping("/listAll")
-	public ResponseEntity<List<Ano>> listAll() {
+	public ResponseEntity<List<Biblioteca>> listAll() {
 		try {
-			List<Ano> listaAno = this.AnoServices.listAll();
+			List<Biblioteca> listaAno = this.BibliotecaService.listAll();
 			return new ResponseEntity<>(listaAno, HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -58,12 +58,12 @@ public class AnoController {
 		}
 	}
 
-	@GetMapping("/findById/{IdAno}")
-	public ResponseEntity<Ano> buscar(@PathVariable long IdAno) {
+	@GetMapping("/findById/{IdBlibioteca}")
+	public ResponseEntity<Biblioteca> buscar(@PathVariable long IdBlibioteca) {
 
 		try {
-			Ano ano = this.AnoServices.buscar(IdAno);
-			return new ResponseEntity<Ano>(ano, HttpStatus.OK);
+			Biblioteca ano = this.BibliotecaService.buscar(IdBlibioteca);
+			return new ResponseEntity<Biblioteca>(ano, HttpStatus.OK);
 		} catch (Exception e) {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -71,10 +71,10 @@ public class AnoController {
 		}
 	}
 	
-	@DeleteMapping("/delete/{idAno}")
-	public ResponseEntity<String> delete(@PathVariable long idAno) {
+	@DeleteMapping("/delete/{IdBlibioteca}")
+	public ResponseEntity<String> delete(@PathVariable long IdBlibioteca) {
 		try {
-			String msg = this.AnoServices.delete(idAno);
+			String msg = this.BibliotecaService.delete(IdBlibioteca);
 			return new ResponseEntity<>(msg, HttpStatus.CONTINUE);
 		} catch (Exception e) {
 			// TODO: handle exception

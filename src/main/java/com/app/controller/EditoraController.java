@@ -46,7 +46,7 @@ public class EditoraController {
 		}
 	}
 
-	@GetMapping("/ListAll")
+	@GetMapping("/listAll")
 	public ResponseEntity<List<Editora>> listAll() {
 		try {
 			List<Editora> listaEditora = this.EditoraServices.listAll();

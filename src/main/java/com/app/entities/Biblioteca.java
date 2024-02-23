@@ -9,9 +9,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Ano {
+public class Biblioteca {
 	
-	private long idAno;
-	private int Ano;
+	private long IdBiblioteca;
+	private String Biblioteca;
+	private String Telefone;
 
 }

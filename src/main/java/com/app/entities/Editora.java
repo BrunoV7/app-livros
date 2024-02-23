@@ -13,5 +13,7 @@ public class Editora {
 	
 	private long idEditora;
 	private String Editora;
+	private String Endereco;
+	private String Telefone;
 
 }

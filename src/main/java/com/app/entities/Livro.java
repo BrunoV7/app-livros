@@ -9,9 +9,12 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Titulo {
+public class Livro {
 	
-	private long idTitulo;
+	private long IdLivro;
+	private String ISSN;
 	private String Titulo;
-
+	private String Sinopse;
+	private int ano;
+	private int NumPag;
 }

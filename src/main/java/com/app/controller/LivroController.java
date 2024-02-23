@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.entities.Titulo;
-import com.app.services.TituloService;
+import com.app.entities.Livro;
+import com.app.services.LivroService;
 
 @RestController
-@RequestMapping("/Titulo")
-public class TituloController {
+@RequestMapping("/Livro")
+public class LivroController {
 
 	@Autowired
-	private TituloService tituloServices;
+	private LivroService tituloServices;
 
 	@PostMapping("/save")
-	public ResponseEntity<String> salvar(@RequestBody Titulo titulo) {
+	public ResponseEntity<String> salvar(@RequestBody Livro titulo) {
 
 		try {
 			String sTitulo = this.tituloServices.salvar(titulo);
@@ -36,7 +36,7 @@ public class TituloController {
 	}
 
 	@PutMapping("/updade/{id}")
-	public ResponseEntity<String> update(@RequestBody Titulo titulo, @PathVariable int id) {
+	public ResponseEntity<String> update(@RequestBody Livro titulo, @PathVariable int id) {
 		try {
 			String idTitulo = this.tituloServices.updade(id, titulo);
 			return new ResponseEntity<String>(idTitulo + "foi incluido!", HttpStatus.CREATED);
@@ -46,10 +46,10 @@ public class TituloController {
 		}
 	}
 
-	@GetMapping("/ListAll")
-	public ResponseEntity<List<Titulo>> listAll() {
+	@GetMapping("/listAll")
+	public ResponseEntity<List<Livro>> listAll() {
 		try {
-			List<Titulo> listaTitulo = this.tituloServices.listAll();
+			List<Livro> listaTitulo = this.tituloServices.listAll();
 			return new ResponseEntity<>(listaTitulo, HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -58,11 +58,11 @@ public class TituloController {
 	}
 
 	@GetMapping("/findById/{IdTitulo}")
-	public ResponseEntity<Titulo> buscar(@PathVariable long IdTitulo) {
+	public ResponseEntity<Livro> buscar(@PathVariable long IdTitulo) {
 
 		try {
-			Titulo titulo = this.tituloServices.buscar(IdTitulo);
-			return new ResponseEntity<Titulo>(titulo, HttpStatus.OK);
+			Livro titulo = this.tituloServices.buscar(IdTitulo);
+			return new ResponseEntity<Livro>(titulo, HttpStatus.OK);
 		} catch (Exception e) {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

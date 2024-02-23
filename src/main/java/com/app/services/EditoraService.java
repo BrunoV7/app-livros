@@ -31,9 +31,9 @@ public class EditoraService {
 
 	public List<Editora> listAll() {
 		// TODO Auto-generated method stub
-		Editora editora = new Editora (1, "LIVROS&CO");
-		Editora editora2 = new Editora (2, "ARGO22");
-		Editora editora3 = new Editora (3, "DREAMTALE");
+		Editora editora = new Editora (1, "LIVROS&CO","ENDEREÇO1", "01999011111");
+		Editora editora2 = new Editora (2, "LEGARD22","ENDEREÇO2", "01999012222");
+		Editora editora3 = new Editora (3, "DREAMTALE","ENDEREÇO3", "01999013333");
 		
 		lista.add(editora);
 		lista.add(editora2);

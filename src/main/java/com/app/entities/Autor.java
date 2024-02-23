@@ -13,5 +13,7 @@ public class Autor {
 	
 	private long idAutor;
 	private String Autor;
+	private String CPF;
+	private int idade;
 
 }

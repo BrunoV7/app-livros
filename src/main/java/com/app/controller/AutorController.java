@@ -46,7 +46,7 @@ public class AutorController {
 		}
 	}
 
-	@GetMapping("/ListAll")
+	@GetMapping("/listAll")
 	public ResponseEntity<List<Autor>> listAll() {
 		try {
 			List<Autor> listaAutor = this.AutorServices.listAll();

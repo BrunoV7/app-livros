@@ -31,9 +31,9 @@ public class AutorService {
 
 	public List<Autor> listAll() {
 		// TODO Auto-generated method stub
-		Autor autor = new Autor (1, "Jacob Williams");
-		Autor autor2 = new Autor (2, "Haven Accord");
-		Autor autor3 = new Autor (3, "Fabel Carol");
+		Autor autor = new Autor (1, "Jacob Williams", "001.002.003-04", 33);
+		Autor autor2 = new Autor (2, "Haven Accord", "002.003.004-05", 40);
+		Autor autor3 = new Autor (3, "Fabel Carol", "003.004.005-06", 25);
 		
 		lista.add(autor);
 		lista.add(autor2);
