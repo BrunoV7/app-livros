@@ -27,7 +27,7 @@ public class LivroController {
 	public ResponseEntity<String> salvar(@RequestBody Livro titulo) {
 
 		try {
-			String sTitulo = this.tituloServices.salvar(titulo);
+			String sTitulo = this.tituloServices.save(titulo);
 			return new ResponseEntity<String>(sTitulo + "foi incluido!", HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -38,7 +38,7 @@ public class LivroController {
 	@PutMapping("/updade/{id}")
 	public ResponseEntity<String> update(@RequestBody Livro titulo, @PathVariable int id) {
 		try {
-			String idTitulo = this.tituloServices.updade(id, titulo);
+			String idTitulo = this.tituloServices.update(id, titulo);
 			return new ResponseEntity<String>(idTitulo + "foi incluido!", HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -61,7 +61,7 @@ public class LivroController {
 	public ResponseEntity<Livro> buscar(@PathVariable long IdTitulo) {
 
 		try {
-			Livro titulo = this.tituloServices.buscar(IdTitulo);
+			Livro titulo = this.tituloServices.findById(IdTitulo);
 			return new ResponseEntity<Livro>(titulo, HttpStatus.OK);
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -27,8 +27,8 @@ public class EditoraController {
 	public ResponseEntity<String> salvar(@RequestBody Editora editora) {
 
 		try {
-			String sEditora = this.EditoraServices.salvar(editora);
-			return new ResponseEntity<String>(sEditora + "foi incluido!", HttpStatus.CREATED);
+			String sEditora = this.EditoraServices.save(editora);
+			return new ResponseEntity<String>(sEditora + "foi incluiddddo!", HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -38,7 +38,7 @@ public class EditoraController {
 	@PutMapping("/updade/{id}")
 	public ResponseEntity<String> update(@RequestBody Editora editora, @PathVariable int id) {
 		try {
-			String idEditora = this.EditoraServices.updade(id, editora);
+			String idEditora = this.EditoraServices.update(id, editora);
 			return new ResponseEntity<String>(idEditora + "foi incluido!", HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -61,7 +61,7 @@ public class EditoraController {
 	public ResponseEntity<Editora> buscar(@PathVariable long IdEditora) {
 
 		try {
-			Editora editora = this.EditoraServices.buscar(IdEditora);
+			Editora editora = this.EditoraServices.findById(IdEditora);
 			return new ResponseEntity<Editora>(editora, HttpStatus.OK);
 		} catch (Exception e) {
 			// TODO: handle exception

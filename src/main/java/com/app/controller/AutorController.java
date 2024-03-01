@@ -24,11 +24,11 @@ public class AutorController {
 	private AutorService AutorServices;
 
 	@PostMapping("/save")
-	public ResponseEntity<String> salvar(@RequestBody Autor autor) {
+	public ResponseEntity<String> save(@RequestBody Autor autor) {
 
 		try {
-			String sAutor = this.AutorServices.salvar(autor);
-			return new ResponseEntity<String>(sAutor + "foi incluido!", HttpStatus.CREATED);
+			String sAutor = this.AutorServices.save(autor);
+			return new ResponseEntity<String>(sAutor + " foi incluido!", HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -38,7 +38,7 @@ public class AutorController {
 	@PutMapping("/updade/{id}")
 	public ResponseEntity<String> update(@RequestBody Autor autor, @PathVariable int id) {
 		try {
-			String idAutor = this.AutorServices.updade(id, autor);
+			String idAutor = this.AutorServices.update(id, autor);
 			return new ResponseEntity<String>(idAutor + "foi incluido!", HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -61,7 +61,7 @@ public class AutorController {
 	public ResponseEntity<Autor> buscar(@PathVariable long IdAutor) {
 
 		try {
-			Autor autor = this.AutorServices.buscar(IdAutor);
+			Autor autor = this.AutorServices.findById(IdAutor);
 			return new ResponseEntity<Autor>(autor, HttpStatus.OK);
 		} catch (Exception e) {
 			// TODO: handle exception

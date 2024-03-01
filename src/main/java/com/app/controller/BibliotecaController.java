@@ -28,7 +28,7 @@ public class BibliotecaController {
 	public ResponseEntity<String> salvar(@RequestBody Biblioteca biblioteca) {
 
 		try {
-			String NovaBiblioteca = this.BibliotecaService.salvar(biblioteca);
+			String NovaBiblioteca = this.BibliotecaService.save(biblioteca);
 			return new ResponseEntity<String>(NovaBiblioteca + " foi incluido!", HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -39,7 +39,7 @@ public class BibliotecaController {
 	@PutMapping("/updade/{id}")
 	public ResponseEntity<String> update(@RequestBody Biblioteca biblioteca, @PathVariable int id) {
 		try {
-			String IdBlibioteca = this.BibliotecaService.updade(id, biblioteca);
+			String IdBlibioteca = this.BibliotecaService.update(id, biblioteca);
 			return new ResponseEntity<String>(IdBlibioteca + " foi atualizado!", HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -62,7 +62,7 @@ public class BibliotecaController {
 	public ResponseEntity<Biblioteca> buscar(@PathVariable long IdBlibioteca) {
 
 		try {
-			Biblioteca ano = this.BibliotecaService.buscar(IdBlibioteca);
+			Biblioteca ano = this.BibliotecaService.findById(IdBlibioteca);
 			return new ResponseEntity<Biblioteca>(ano, HttpStatus.OK);
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -1,75 +1,47 @@
 package com.app.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.entities.Biblioteca;
+import com.app.repository.BibiotecaRepository;
 
 @Service
 public class BibliotecaService {
-	List<Biblioteca> lista = new ArrayList<>();
+	
+	@Autowired
+	private BibiotecaRepository bibiotecaRepository;
 
-	public String salvar(Biblioteca biblioteca) {
-		lista.add(biblioteca);
-		return biblioteca.getBiblioteca() + " Salvo!";
-	}	
-	
-	
-	
-	public String updade(int id, Biblioteca biblioteca) {
-		lista = this.listAll();
-		if(lista != null) {
-			for(int i = 0; i < lista.size(); i++) {
-					if(lista.get(i).getIdBiblioteca() == id) {
-						lista.set(i, biblioteca);
-						return biblioteca.getBiblioteca();
-					}
-				}
-			}
-		return null;
+	public String save(Biblioteca biblioteca) {
+		this.bibiotecaRepository.save(biblioteca);
+		return biblioteca.getBiblioteca() + "Salvo!";
 	}
-	
+
+	public String update(int id, Biblioteca biblioteca) {
+		
+		biblioteca.setIdBiblioteca(id);
+		this.bibiotecaRepository.save(biblioteca);
+		return biblioteca.getBiblioteca() + " adicionada!";
+		
+	}
+
 	public List<Biblioteca> listAll() {
-		// TODO Auto-generated method stub
-		Biblioteca novaBibilioteca = new Biblioteca (1, "LongTown", "45998335959");
-		Biblioteca novaBibilioteca2 = new Biblioteca (2, "Biblioteca Lang", "44999435959");
-		Biblioteca novaBibilioteca3 = new Biblioteca (3, "Livros&Co", "43987454343");
 		
-		lista.add(novaBibilioteca);
-		lista.add(novaBibilioteca2);
-		lista.add(novaBibilioteca3);
+		return this.bibiotecaRepository.findAll();
 		
-		return lista;
 	}
 
-	public Biblioteca buscar(long idnovaBibilioteca) {
-		// TODO Auto-generated method stub
-		lista = this.listAll();
-		if(lista != null) {
-			for(int i = 0; i < lista.size();) {
-					if(lista.get(i).getIdBiblioteca() == idnovaBibilioteca) {}
-					return lista.get(i);
-				}
-			}
-			
+	public Biblioteca findById(long idbiblioteca) {
+		
+		Biblioteca biblioteca = this.bibiotecaRepository.findById(idbiblioteca).get();
+		return biblioteca;
+	}
+
+	public String delete(long idbiblioteca) {
+		this.bibiotecaRepository.deleteById(idbiblioteca);
 		return null;
-	}
-
-	public String delete(long idnovaBibilioteca) {
-		// TODO Auto-generated method stub
-		lista = this.listAll();
-		
-		if(lista != null) {
-			for(int i = 0; i < lista.size(); i++) {
-				if(lista.get(i).getIdBiblioteca() == idnovaBibilioteca) {
-					lista.remove(i);
-					return " removido!";
-				}
-			}
-		}
-		return "Not Found!";
 	}
 
 }
