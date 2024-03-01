@@ -36,7 +36,7 @@ public class LivroController {
 		}
 	}
 
-	@PutMapping("/updade/{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<String> update(@RequestBody Livro titulo, @PathVariable int id) {
 		try {
 			String idTitulo = this.tituloServices.update(id, titulo);

@@ -27,7 +27,7 @@ public class Livro {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long IdLivro;
+	private long idLivro;
 	
 	private String issn;
 	private String titulo;

@@ -22,7 +22,7 @@ public class Biblioteca {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long IdBiblioteca;
+	private long idBiblioteca;
 	
 	private String biblioteca;
 	private String telefone;
